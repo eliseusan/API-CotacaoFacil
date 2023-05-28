@@ -1,0 +1,7 @@
+server:
+  servlet:
+    context-path: /gestao-cotacaoFacil/api
+
+springdoc:
+  swagger-ui:
+    path: /public/swagger
