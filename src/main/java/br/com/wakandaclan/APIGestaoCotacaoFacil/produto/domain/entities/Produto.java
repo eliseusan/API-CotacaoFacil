@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,10 +26,19 @@ public class Produto {
     @NotBlank
     private String marca ;
     @NotNull
-    private Integer codigoDeBarra;
+    private String codigoDeBarra;
     @NotNull
     private BigDecimal valor;
     private LocalDateTime dataHoraDoCadastro ;
     private LocalDateTime dataHoraDaUltimaAlteracao ;
+
+    public Produto(ProdutoRequest produtoRequest) {
+        this.descricao = produtoRequest.getDescricao();
+        this.marca = produtoRequest.getMarca();
+        this.codigoDeBarra = produtoRequest.getCodigoDeBarra();
+        this.valor = produtoRequest.getValor();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+    }
+
 
 }
