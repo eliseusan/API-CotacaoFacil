@@ -39,6 +39,4 @@ public class Produto {
         this.valor = produtoRequest.getValor();
         this.dataHoraDoCadastro = LocalDateTime.now();
     }
-
-
 }
