@@ -1,6 +1,7 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.controller;
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service.ProdutoService;
@@ -9,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @Log4j2
 @RestController
@@ -26,9 +28,17 @@ public class ProdutoController implements ProdutoAPI {
 
     @Override
     public List<ProdutoListResponse> buscaTodosProdutos() {
-        log.info("[start] ClienteController - buscaTodosProdutos");
+        log.info("[start] ProdutoController - buscaTodosProdutos");
         var listaDeProdutos = produtoService.buscaTodosProdutos();
-        log.info("[finish] ClienteController - buscaTodosProdutos");
+        log.info("[finish] ProdutoController - buscaTodosProdutos");
         return listaDeProdutos;
+    }
+
+    @Override
+    public ProdutoDetalhadoListResponse buscaProdutoPorId(UUID idProduto) {
+        log.info("[start] ProdutoController - buscaProdutoPorId");
+        var produtoPorId = produtoService.buscaProdutoPorId(idProduto);
+        log.info("[finish] ProdutoController - buscaProdutoPorId");
+        return produtoPorId;
     }
 }

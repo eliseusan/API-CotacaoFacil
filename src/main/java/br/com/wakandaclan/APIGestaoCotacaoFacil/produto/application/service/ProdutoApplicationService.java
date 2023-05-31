@@ -2,6 +2,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.controller.ProdutoAPI;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.repository.ProdutoRepository;
@@ -11,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -30,9 +32,17 @@ public class ProdutoApplicationService implements ProdutoService {
 
     @Override
     public List<ProdutoListResponse> buscaTodosProdutos() {
-        log.info("[start] ClienteApplicationService - buscaTodosProdutos");
+        log.info("[start] ProdutoApplicationService - buscaTodosProdutos");
         List<Produto> produtos = produtoRepository.buscaTodosProdutos();
-        log.info("[finish] ClienteApplicationService - buscaTodosProdutos");
+        log.info("[finish] ProdutoApplicationService - buscaTodosProdutos");
         return ProdutoListResponse.converte(produtos);
+    }
+
+    @Override
+    public ProdutoDetalhadoListResponse buscaProdutoPorId(UUID idProduto) {
+        log.info("[start] ProdutoApplicationService - buscaProdutoPorId");
+        Produto produto = produtoRepository.buscaProdutoPorId(idProduto);
+        log.info("[finish] ProdutoApplicationService - buscaProdutoPorId");
+        return new ProdutoDetalhadoListResponse(produto);
     }
 }
