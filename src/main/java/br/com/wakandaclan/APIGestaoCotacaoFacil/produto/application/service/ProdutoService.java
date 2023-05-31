@@ -15,4 +15,6 @@ public interface ProdutoService {
     List<ProdutoListResponse> buscaTodosProdutos();
 
     ProdutoDetalhadoListResponse buscaProdutoPorId(UUID idProduto);
+
+    void deletaProdutoPorId(UUID idProduto);
 }

@@ -37,8 +37,17 @@ public class ProdutoController implements ProdutoAPI {
     @Override
     public ProdutoDetalhadoListResponse buscaProdutoPorId(UUID idProduto) {
         log.info("[start] ProdutoController - buscaProdutoPorId");
+        log.info("[idProduto] {}", idProduto);
         var produtoPorId = produtoService.buscaProdutoPorId(idProduto);
         log.info("[finish] ProdutoController - buscaProdutoPorId");
         return produtoPorId;
+    }
+
+    @Override
+    public void deletaProdutoPorId(UUID idProduto) {
+        log.info("[start] ProdutoController - deletaProdutoPorId");
+        log.info("[idProduto] {}", idProduto);
+        produtoService.deletaProdutoPorId(idProduto);
+        log.info("[finish] ProdutoController - deletaProdutoPorId");
     }
 }
