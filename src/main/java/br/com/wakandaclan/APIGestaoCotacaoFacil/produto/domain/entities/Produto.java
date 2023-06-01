@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import lombok.*;
 
@@ -38,5 +39,13 @@ public class Produto {
         this.codigoDeBarra = produtoRequest.getCodigoDeBarra();
         this.valor = produtoRequest.getValor();
         this.dataHoraDoCadastro = LocalDateTime.now();
+    }
+
+    public void alteraProduto(ProdutoAlteracaoRequest produtoAlteracaoRequest) {
+        this.descricao = produtoAlteracaoRequest.getDescricao();
+        this.marca = produtoAlteracaoRequest.getMarca();
+        this.codigoDeBarra = produtoAlteracaoRequest.getCodigoDeBarra();
+        this.valor = produtoAlteracaoRequest.getValor();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
     }
 }

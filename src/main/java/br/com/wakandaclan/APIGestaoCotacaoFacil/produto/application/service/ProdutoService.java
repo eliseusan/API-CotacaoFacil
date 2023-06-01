@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
@@ -17,4 +18,6 @@ public interface ProdutoService {
     ProdutoDetalhadoListResponse buscaProdutoPorId(UUID idProduto);
 
     void deletaProdutoPorId(UUID idProduto);
+
+    void alteraProduto(UUID idProduto, ProdutoAlteracaoRequest produtoAlteracaoRequest);
 }

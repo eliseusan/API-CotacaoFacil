@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.controller;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
@@ -49,5 +50,13 @@ public class ProdutoController implements ProdutoAPI {
         log.info("[idProduto] {}", idProduto);
         produtoService.deletaProdutoPorId(idProduto);
         log.info("[finish] ProdutoController - deletaProdutoPorId");
+    }
+
+    @Override
+    public void alteraProduto(UUID idProduto, ProdutoAlteracaoRequest produtoAlteracaoRequest) {
+        log.info("[start] ProdutoController - alteraProduto");
+        log.info("[idProduto] {}", idProduto);
+        produtoService.alteraProduto(idProduto, produtoAlteracaoRequest);
+        log.info("[finish] ProdutoController - alteraProduto");
     }
 }
