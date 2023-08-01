@@ -1,6 +1,5 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.controller.ProdutoAPI;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
