@@ -50,4 +50,12 @@ public class FornecedorController implements FornecedorAPI{
         fornecedorService.alteraFornecedor(idFornecedor, fornecedorAlteracaoRequest);
         log.info("[finish] FornecedorController - alteraFornecedor");
     }
+
+    @Override
+    public void deletaFornecedorPorId(UUID idFornecedor) {
+        log.info("[start] FornecedorController - deletaFornecedorPorId");
+        log.info("[idFornecedor] {}", idFornecedor);
+        fornecedorService.deletaFornecedorPorId(idFornecedor);
+        log.info("[finish] FornecedorController - deletaFornecedorPorId");
+    }
 }

@@ -55,4 +55,12 @@ public class FornecedorApplicationService implements FornecedorService {
         fornecedorRepository.salva(fornecedor);
         log.info("[finish] FornecedorApplicationService - alteraFornecedor");
     }
+
+    @Override
+    public void deletaFornecedorPorId(UUID idFornecedor) {
+        log.info("[start] FornecedorApplicationService - deletaFornecedorPorId");
+        Fornecedor fornecedor = fornecedorRepository.buscaFornecedorPorId(idFornecedor);
+        fornecedorRepository.deletaFornecedorPorId(fornecedor);
+        log.info("[finish] FornecedorApplicationService - deletaFornecedorPorId");
+    }
 }

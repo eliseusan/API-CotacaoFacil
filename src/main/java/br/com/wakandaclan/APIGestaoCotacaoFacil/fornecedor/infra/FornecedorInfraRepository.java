@@ -42,4 +42,11 @@ public class FornecedorInfraRepository implements FornecedorRepository {
         log.info("[finish] FornecedorInfraRepository - buscaFornecedorPorId ");
         return fornecedorPorId;
     }
+
+    @Override
+    public void deletaFornecedorPorId(Fornecedor fornecedor) {
+        log.info("[start] FornecedorInfraRepository - deletaFornecedorPorId ");
+        fornecedorSpringDataJPARepository.delete(fornecedor);
+        log.info("[finish] FornecedorInfraRepository - deletaFornecedorPorId ");
+    }
 }

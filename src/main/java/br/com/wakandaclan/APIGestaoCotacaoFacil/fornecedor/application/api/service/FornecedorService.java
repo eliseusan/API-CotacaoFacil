@@ -17,4 +17,6 @@ public interface FornecedorService {
     FornecedorDetalhadoListResponse buscaFornecedorPorId(UUID idFornecedor);
 
     void alteraFornecedor(UUID idFornecedor, FornecedorAlteracaoRequest fornecedorAlteracaoRequest);
+
+    void deletaFornecedorPorId(UUID idFornecedor);
 }

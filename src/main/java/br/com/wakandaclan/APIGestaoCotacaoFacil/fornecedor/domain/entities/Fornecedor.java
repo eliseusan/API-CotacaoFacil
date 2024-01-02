@@ -24,7 +24,6 @@ public class Fornecedor {
     private String nomeFantasia;
     @NotBlank
     private String razaoSocial;
-    @CNPJ(message = "Insira um CNPJ valido")
     private String cnpj;
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;

@@ -34,4 +34,8 @@ public interface FornecedorAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void alteraFornecedor(@PathVariable UUID idFornecedor,
                        @Valid @RequestBody FornecedorAlteracaoRequest fornecedorAlteracaoRequest);
+
+    @DeleteMapping(value = "/{idFornecedor}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaFornecedorPorId(@PathVariable UUID idFornecedor);
 }

@@ -10,4 +10,6 @@ public interface FornecedorRepository {
     List<Fornecedor> buscaTodosFornecedores();
 
     Fornecedor buscaFornecedorPorId(UUID idFornecedor);
+
+    void deletaFornecedorPorId(Fornecedor fornecedor);
 }
