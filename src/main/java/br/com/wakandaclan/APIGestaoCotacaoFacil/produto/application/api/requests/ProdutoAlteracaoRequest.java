@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 
 @Value
 public class ProdutoAlteracaoRequest {
-    private String descricao ;
+    private String descricao;
     @NotBlank
-    private String marca ;
+    private String marca;
     @NotNull
     private String codigoDeBarra;
     @NotNull

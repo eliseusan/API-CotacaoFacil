@@ -3,6 +3,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.control
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,10 @@ public interface ProdutoAPI {
     @GetMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.OK)
     ProdutoDetalhadoListResponse buscaProdutoPorId(@PathVariable UUID idProduto);
+
+    @GetMapping(value = "fornecedor/{idFornecedorProduto}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ProdutoDoFornecedorListResponse> findAllProdutosPorIdFornecedorProduto(@PathVariable UUID idFornecedorProduto);
 
     @DeleteMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

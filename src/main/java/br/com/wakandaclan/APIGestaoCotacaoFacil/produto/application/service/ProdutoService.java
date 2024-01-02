@@ -3,6 +3,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 
@@ -20,4 +21,6 @@ public interface ProdutoService {
     void deletaProdutoPorId(UUID idProduto);
 
     void alteraProduto(UUID idProduto, ProdutoAlteracaoRequest produtoAlteracaoRequest);
+
+    List<ProdutoDoFornecedorListResponse> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto);
 }

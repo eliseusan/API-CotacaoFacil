@@ -47,4 +47,12 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 		produtoSpringDataJPARepository.delete(produto);
 		log.info("[finish] ProdutoInfraRepository - deletaProdutoPorId ");
 	}
+
+	@Override
+	public List<Produto> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto) {
+		log.info("[start] ProdutoInfraRepository - buscaProdutoPorIdFornecedor ");
+		var produtos = produtoSpringDataJPARepository.findByIdFornecedorProduto(idFornecedorProduto);
+		log.info("[finish] ProdutoInfraRepository - buscaProdutoPorIdFornecedor ");
+		return produtos;
+	}
 }

@@ -9,6 +9,7 @@ import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Forne
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.repository.ProdutoRepository;
@@ -68,5 +69,14 @@ public class ProdutoApplicationService implements ProdutoService {
         produto.alteraProduto(produtoAlteracaoRequest);
         produtoRepository.salvaProduto(produto);
         log.info("[finish] ProdutoApplicationService - alteraProduto");
+    }
+
+    @Override
+    public List<ProdutoDoFornecedorListResponse> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto) {
+        log.info("[start] ProdutoApplicationService - buscaProdutoPorIdFornecedor");
+        fornecedorRepository.buscaFornecedorPorId(idFornecedorProduto);
+        List<Produto> produtosFornecedor = produtoRepository.buscaProdutoPorIdFornecedor(idFornecedorProduto);
+        log.info("[finish] ProdutoApplicationService - buscaProdutoPorIdFornecedor");
+        return ProdutoDoFornecedorListResponse.converte(produtosFornecedor);
     }
 }
