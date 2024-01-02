@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorDetalhadoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorListResponse;
@@ -40,5 +41,13 @@ public class FornecedorController implements FornecedorAPI{
         var fornecedorPorId = fornecedorService.buscaFornecedorPorId(idFornecedor);
         log.info("[finish] FornecedorController - buscaFornecedorPorId");
         return fornecedorPorId;
+    }
+
+    @Override
+    public void alteraFornecedor(UUID idFornecedor, FornecedorAlteracaoRequest fornecedorAlteracaoRequest) {
+        log.info("[start] FornecedorController - alteraFornecedor");
+        log.info("[idFornecedor] {}", idFornecedor);
+        fornecedorService.alteraFornecedor(idFornecedor, fornecedorAlteracaoRequest);
+        log.info("[finish] FornecedorController - alteraFornecedor");
     }
 }
