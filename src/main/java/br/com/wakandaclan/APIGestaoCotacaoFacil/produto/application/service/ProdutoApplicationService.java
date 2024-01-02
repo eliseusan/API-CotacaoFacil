@@ -1,8 +1,15 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.repository.FornecedorRepository;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.service.FornecedorApplicationService;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.service.FornecedorService;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.repository.ProdutoRepository;
@@ -19,23 +26,24 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ProdutoApplicationService implements ProdutoService {
     private final ProdutoRepository produtoRepository;
+    private final FornecedorRepository fornecedorRepository ;
 
     @Override
-    public ProdutoResponse criaProduto(ProdutoRequest produtoRequest) {
+    public ProdutoResponse criaProduto(UUID idFornecedorProduto,ProdutoRequest produtoRequest) {
         log.info("[start] ProdutoApplicationService - criaProduto");
-        Produto produto = produtoRepository.salvaProduto(new Produto(produtoRequest));
+        fornecedorRepository.buscaFornecedorPorId(idFornecedorProduto);
+        Produto produto = produtoRepository.salvaProduto(new Produto(idFornecedorProduto,produtoRequest));
         log.info("[finish] ProdutoApplicationService - criaProduto");
-        return ProdutoResponse.builder()
-                .idProduto(produto.getIdProduto())
-                .build();
+        return new ProdutoResponse(produto);
     }
 
     @Override
     public List<ProdutoListResponse> buscaTodosProdutos() {
         log.info("[start] ProdutoApplicationService - buscaTodosProdutos");
         List<Produto> produtos = produtoRepository.buscaTodosProdutos();
+        List<Fornecedor> fornecedor = fornecedorRepository.buscaTodosFornecedores();
         log.info("[finish] ProdutoApplicationService - buscaTodosProdutos");
-        return ProdutoListResponse.converte(produtos);
+        return ProdutoListResponse.converte(produtos,fornecedor);
     }
 
     @Override
@@ -61,5 +69,14 @@ public class ProdutoApplicationService implements ProdutoService {
         produto.alteraProduto(produtoAlteracaoRequest);
         produtoRepository.salvaProduto(produto);
         log.info("[finish] ProdutoApplicationService - alteraProduto");
+    }
+
+    @Override
+    public List<ProdutoDoFornecedorListResponse> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto) {
+        log.info("[start] ProdutoApplicationService - buscaProdutoPorIdFornecedor");
+        fornecedorRepository.buscaFornecedorPorId(idFornecedorProduto);
+        List<Produto> produtosFornecedor = produtoRepository.buscaProdutoPorIdFornecedor(idFornecedorProduto);
+        log.info("[finish] ProdutoApplicationService - buscaProdutoPorIdFornecedor");
+        return ProdutoDoFornecedorListResponse.converte(produtosFornecedor);
     }
 }

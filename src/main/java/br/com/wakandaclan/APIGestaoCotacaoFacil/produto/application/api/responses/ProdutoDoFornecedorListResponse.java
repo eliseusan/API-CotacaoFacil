@@ -3,24 +3,24 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.respons
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.Value;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
-
+import java.util.stream.Collectors;
 @Getter
 @ToString
-public class ProdutoDetalhadoListResponse {
-    private UUID idProduto ;
-    private String descricao ;
-    private String marca ;
+public class ProdutoDoFornecedorListResponse {
+    private UUID idProduto;
+    private String descricao;
+    private String marca;
     private String codigoDeBarra;
     private BigDecimal valor;
-    private LocalDateTime dataHoraDoCadastro ;
-    private LocalDateTime dataHoraDaUltimaAlteracao ;
+    private LocalDateTime dataHoraDoCadastro;
+    private LocalDateTime dataHoraDaUltimaAlteracao;
 
-    public ProdutoDetalhadoListResponse(Produto produto) {
+    public ProdutoDoFornecedorListResponse(Produto produto) {
         this.idProduto = produto.getIdProduto();
         this.descricao = produto.getDescricao();
         this.marca = produto.getMarca();
@@ -28,5 +28,11 @@ public class ProdutoDetalhadoListResponse {
         this.valor = produto.getValor();
         this.dataHoraDoCadastro = produto.getDataHoraDoCadastro();
         this.dataHoraDaUltimaAlteracao = produto.getDataHoraDaUltimaAlteracao();
+    }
+
+    public static List<ProdutoDoFornecedorListResponse> converte(List<Produto> produtosFornecedor) {
+        return produtosFornecedor.stream()
+                .map(ProdutoDoFornecedorListResponse::new)
+                .collect(Collectors.toList());
     }
 }

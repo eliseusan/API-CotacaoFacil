@@ -3,6 +3,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.control
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service.ProdutoService;
@@ -20,9 +21,10 @@ public class ProdutoController implements ProdutoAPI {
     private final ProdutoService produtoService;
 
     @Override
-    public ProdutoResponse salvaProduto(ProdutoRequest produtoRequest) {
+    public ProdutoResponse salvaProduto(UUID idFornecedorProduto,ProdutoRequest produtoRequest) {
         log.info("[start] ProdutoController - postProduto");
-        var produto = produtoService.criaProduto(produtoRequest);
+        log.info("[idFornecedorProduto] {}", idFornecedorProduto);
+        var produto = produtoService.criaProduto(idFornecedorProduto,produtoRequest);
         log.info("[finish] ProdutoController - postProduto");
         return produto;
     }
@@ -42,6 +44,15 @@ public class ProdutoController implements ProdutoAPI {
         var produtoPorId = produtoService.buscaProdutoPorId(idProduto);
         log.info("[finish] ProdutoController - buscaProdutoPorId");
         return produtoPorId;
+    }
+
+    @Override
+    public List<ProdutoDoFornecedorListResponse> findAllProdutosPorIdFornecedorProduto(UUID idFornecedorProduto) {
+        log.info("[start] ProdutoController - findAllProdutosPorIdFornecedorProduto");
+        log.info("[idFornecedorProduto] {}", idFornecedorProduto);
+        List<ProdutoDoFornecedorListResponse> produtoDoFornecedor = produtoService.buscaProdutoPorIdFornecedor(idFornecedorProduto);
+        log.info("[finish] ProdutoController - findAllProdutosPorIdFornecedorProduto");
+        return produtoDoFornecedor;
     }
 
     @Override

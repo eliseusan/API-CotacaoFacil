@@ -1,5 +1,7 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities;
 
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorRequest;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import lombok.*;
@@ -22,6 +24,9 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idProduto", updatable = false, unique = true, nullable = false)
     private UUID idProduto ;
+    @NotNull
+    @Column(columnDefinition = "uuid", name = "idFornecedorProduto", nullable = false)
+    private UUID idFornecedorProduto ;
     @NotBlank
     private String descricao ;
     @NotBlank
@@ -33,7 +38,8 @@ public class Produto {
     private LocalDateTime dataHoraDoCadastro ;
     private LocalDateTime dataHoraDaUltimaAlteracao ;
 
-    public Produto(ProdutoRequest produtoRequest) {
+    public Produto(UUID idFornecedorProduto,ProdutoRequest produtoRequest) {
+        this.idFornecedorProduto = idFornecedorProduto;
         this.descricao = produtoRequest.getDescricao();
         this.marca = produtoRequest.getMarca();
         this.codigoDeBarra = produtoRequest.getCodigoDeBarra();
