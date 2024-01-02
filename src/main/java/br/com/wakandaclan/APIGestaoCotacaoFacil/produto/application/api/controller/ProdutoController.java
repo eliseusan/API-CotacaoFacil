@@ -20,9 +20,10 @@ public class ProdutoController implements ProdutoAPI {
     private final ProdutoService produtoService;
 
     @Override
-    public ProdutoResponse salvaProduto(ProdutoRequest produtoRequest) {
+    public ProdutoResponse salvaProduto(UUID idFornecedorProduto,ProdutoRequest produtoRequest) {
         log.info("[start] ProdutoController - postProduto");
-        var produto = produtoService.criaProduto(produtoRequest);
+        log.info("[idFornecedorProduto] {}", idFornecedorProduto);
+        var produto = produtoService.criaProduto(idFornecedorProduto,produtoRequest);
         log.info("[finish] ProdutoController - postProduto");
         return produto;
     }

@@ -16,9 +16,9 @@ import java.util.UUID;
 @RequestMapping("/v1/produto")
 public interface ProdutoAPI {
 
-    @PostMapping
+    @PostMapping(value = "/{idFornecedorProduto}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    ProdutoResponse salvaProduto(@Valid @RequestBody ProdutoRequest produtoRequest);
+    ProdutoResponse salvaProduto(@Valid @PathVariable UUID idFornecedorProduto, @RequestBody ProdutoRequest produtoRequest);
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)

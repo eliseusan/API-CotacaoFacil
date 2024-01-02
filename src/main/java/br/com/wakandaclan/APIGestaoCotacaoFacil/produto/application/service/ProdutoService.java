@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public interface ProdutoService {
 
-    ProdutoResponse criaProduto(ProdutoRequest produtoRequest);
+    ProdutoResponse criaProduto(UUID idFornecedorProduto,ProdutoRequest produtoRequest);
 
     List<ProdutoListResponse> buscaTodosProdutos();
 
