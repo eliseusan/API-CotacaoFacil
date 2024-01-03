@@ -3,8 +3,6 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.cont
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import lombok.Getter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.br.CNPJ;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

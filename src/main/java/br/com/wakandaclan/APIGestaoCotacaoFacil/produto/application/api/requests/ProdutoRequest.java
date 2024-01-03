@@ -1,5 +1,7 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests;
 
+import lombok.Getter;
+import lombok.ToString;
 import lombok.Value;
 
 import javax.validation.constraints.NotBlank;
@@ -7,7 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Value
+@Getter
+@ToString
 public class ProdutoRequest {
     @NotBlank
     private String descricao ;

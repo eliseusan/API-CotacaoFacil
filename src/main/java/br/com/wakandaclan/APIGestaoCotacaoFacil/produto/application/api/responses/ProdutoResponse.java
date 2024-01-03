@@ -1,10 +1,8 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses;
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.Value;
 
 import java.util.UUID;
 @Getter
