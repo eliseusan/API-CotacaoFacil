@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface ProdutoSpringDataJPARepository extends JpaRepository<Produto, UUID> {
 
     List<Produto> findByIdFornecedorProduto(UUID idFornecedorProduto);
+
+    List<Produto> findByMarcaLike(String marca);
 }

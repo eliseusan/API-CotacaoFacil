@@ -2,10 +2,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.control
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,4 +38,8 @@ public interface ProdutoAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void alteraProduto(@PathVariable UUID idProduto,
                        @Valid @RequestBody ProdutoAlteracaoRequest produtoAlteracaoRequest);
+
+    @GetMapping(value = "marca/{marca}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ProdutoPorMarcaListResponse> findAllProdutosPorMarca(@PathVariable String marca);
 }

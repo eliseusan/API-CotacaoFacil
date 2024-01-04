@@ -2,8 +2,13 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.handler;
 
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 import java.util.Optional;
 
 @Getter

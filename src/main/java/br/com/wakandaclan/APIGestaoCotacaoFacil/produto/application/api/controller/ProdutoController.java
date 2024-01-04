@@ -2,10 +2,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.control
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.*;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,10 +18,10 @@ public class ProdutoController implements ProdutoAPI {
     private final ProdutoService produtoService;
 
     @Override
-    public ProdutoResponse salvaProduto(UUID idFornecedorProduto,ProdutoRequest produtoRequest) {
+    public ProdutoResponse salvaProduto(UUID idFornecedorProduto, ProdutoRequest produtoRequest) {
         log.info("[start] ProdutoController - postProduto");
         log.info("[idFornecedorProduto] {}", idFornecedorProduto);
-        var produto = produtoService.criaProduto(idFornecedorProduto,produtoRequest);
+        var produto = produtoService.criaProduto(idFornecedorProduto, produtoRequest);
         log.info("[finish] ProdutoController - postProduto");
         return produto;
     }
@@ -69,5 +66,13 @@ public class ProdutoController implements ProdutoAPI {
         log.info("[idProduto] {}", idProduto);
         produtoService.alteraProduto(idProduto, produtoAlteracaoRequest);
         log.info("[finish] ProdutoController - alteraProduto");
+    }
+
+    @Override
+    public List<ProdutoPorMarcaListResponse> findAllProdutosPorMarca(String marca) {
+        log.info("[start] ProdutoController - findAllProdutosPorMarca");
+        var listaDeProdutos = produtoService.buscaProdutosPorMarca(marca);
+        log.info("[finish] ProdutoController - findAllProdutosPorMarca");
+        return listaDeProdutos;
     }
 }

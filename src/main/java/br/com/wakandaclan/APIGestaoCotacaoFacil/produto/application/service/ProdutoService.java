@@ -2,10 +2,8 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.*;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,4 +21,6 @@ public interface ProdutoService {
     void alteraProduto(UUID idProduto, ProdutoAlteracaoRequest produtoAlteracaoRequest);
 
     List<ProdutoDoFornecedorListResponse> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto);
+
+    List<ProdutoPorMarcaListResponse> buscaProdutosPorMarca(String marca);
 }

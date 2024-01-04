@@ -1,16 +1,17 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities;
 
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorRequest;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.handler.APIException;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
 import lombok.*;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 @Entity
 @Getter
@@ -23,14 +24,14 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idProduto", updatable = false, unique = true, nullable = false)
-    private UUID idProduto ;
+    private UUID idProduto;
     @NotNull
     @Column(columnDefinition = "uuid", name = "idFornecedorProduto", nullable = false)
-    private UUID idFornecedorProduto ;
+    private UUID idFornecedorProduto;
     @NotBlank
-    private String descricao ;
+    private String descricao;
     @NotBlank
-    private String marca ;
+    private String marca;
     @NotNull
     private String codigoDeBarra;
     @NotNull

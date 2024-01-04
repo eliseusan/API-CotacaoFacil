@@ -16,4 +16,6 @@ public interface ProdutoRepository {
     void deletaProdutoPorId(Produto produto);
 
     List<Produto> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto);
+
+    List<Produto> buscaProdutosPorMarca(String marca);
 }

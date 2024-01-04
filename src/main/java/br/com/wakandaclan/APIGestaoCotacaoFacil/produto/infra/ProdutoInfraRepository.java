@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
-
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -36,7 +35,7 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 	public Produto buscaProdutoPorId(UUID idProduto) {
 		log.info("[start] ProdutoInfraRepository - buscaProdutoPorId ");
 		var produtoPorId = produtoSpringDataJPARepository.findById(idProduto)
-				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "PRODUTO NÃO ENCONTRADO!"));;
+				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "PRODUTO NÃO ENCONTRADO!"));
 		log.info("[finish] ProdutoInfraRepository - buscaProdutoPorId ");
 		return produtoPorId;
 	}
@@ -55,4 +54,24 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 		log.info("[finish] ProdutoInfraRepository - buscaProdutoPorIdFornecedor ");
 		return produtos;
 	}
+
+	@Override
+	public List<Produto> buscaProdutosPorMarca(String marca) {
+		log.info("[start] ProdutoInfraRepository - buscaProdutoPorIdFornecedor ");
+
+		// Adicione o caractere "%" à marca para buscar tudo depois do primeiro caractere
+		String marcaComWildcard = marca + "%";
+
+		List<Produto> produtos = produtoSpringDataJPARepository.findByMarcaLike(marcaComWildcard);
+
+		if (produtos.isEmpty()) {
+			log.warn("Nenhum produto encontrado para a marca começando com: {}", marca);
+			throw APIException.build(HttpStatus.BAD_REQUEST, "PRODUTO NÃO ENCONTRADO!");
+		}
+
+		log.info("[finish] ProdutoInfraRepository - buscaProdutoPorIdFornecedor ");
+		return produtos;
+	}
+
+
 }

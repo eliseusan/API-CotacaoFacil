@@ -4,10 +4,7 @@ import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.repos
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDetalhadoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoDoFornecedorListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.ProdutoResponse;
+import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.*;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.repository.ProdutoRepository;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 import lombok.RequiredArgsConstructor;
@@ -74,5 +71,13 @@ public class ProdutoApplicationService implements ProdutoService {
         List<Produto> produtosFornecedor = produtoRepository.buscaProdutoPorIdFornecedor(idFornecedorProduto);
         log.info("[finish] ProdutoApplicationService - buscaProdutoPorIdFornecedor");
         return ProdutoDoFornecedorListResponse.converte(produtosFornecedor);
+    }
+
+    @Override
+    public List<ProdutoPorMarcaListResponse> buscaProdutosPorMarca(String marca) {
+        log.info("[start] ProdutoApplicationService - buscaProdutosPorMarca");
+        List<Produto> produtosPorMarcaList = produtoRepository.buscaProdutosPorMarca(marca);
+        log.info("[finish] ProdutoApplicationService - buscaProdutosPorMarca");
+        return ProdutoPorMarcaListResponse.converte(produtosPorMarcaList);
     }
 }
