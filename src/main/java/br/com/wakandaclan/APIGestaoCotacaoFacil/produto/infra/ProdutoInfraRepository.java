@@ -62,7 +62,7 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 		// Adicione o caractere "%" à marca para buscar tudo depois do primeiro caractere
 		String marcaComWildcard = marca + "%";
 
-		List<Produto> produtos = produtoSpringDataJPARepository.findByMarcaLike(marcaComWildcard);
+		List<Produto> produtos = produtoSpringDataJPARepository.findByMarcaLikeOrderByValorAsc(marcaComWildcard);
 
 		if (produtos.isEmpty()) {
 			log.warn("Nenhum produto encontrado para a marca começando com: {}", marca);

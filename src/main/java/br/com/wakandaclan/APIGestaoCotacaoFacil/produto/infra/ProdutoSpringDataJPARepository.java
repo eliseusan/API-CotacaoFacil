@@ -10,5 +10,5 @@ public interface ProdutoSpringDataJPARepository extends JpaRepository<Produto, U
 
     List<Produto> findByIdFornecedorProduto(UUID idFornecedorProduto);
 
-    List<Produto> findByMarcaLike(String marca);
+    List<Produto> findByMarcaLikeOrderByValorAsc(String marca);
 }
