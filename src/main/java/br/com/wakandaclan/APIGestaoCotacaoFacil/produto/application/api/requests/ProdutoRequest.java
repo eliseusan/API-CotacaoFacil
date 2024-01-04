@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @ToString
+@Builder
 public class ProdutoRequest {
     @NotBlank
     private String descricao ;
@@ -20,5 +22,4 @@ public class ProdutoRequest {
     private String codigoDeBarra;
     @NotNull
     private BigDecimal valor;
-    private LocalDateTime dataHoraDoCadastro ;
 }

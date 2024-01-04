@@ -1,10 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.service;
 
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorListResponse;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.responses.FornecedorResponse;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.repository.FornecedorRepository;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.service.FornecedorApplicationService;
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.service.FornecedorService;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests.ProdutoRequest;
