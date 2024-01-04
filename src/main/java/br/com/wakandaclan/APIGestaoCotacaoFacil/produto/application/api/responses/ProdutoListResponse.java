@@ -4,7 +4,6 @@ import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Forne
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.Value;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Getter
 @ToString

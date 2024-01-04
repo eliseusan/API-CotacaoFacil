@@ -29,7 +29,7 @@ public interface ProdutoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     ProdutoDetalhadoListResponse buscaProdutoPorId(@PathVariable UUID idProduto);
 
-    @GetMapping(value = "fornecedor/{idFornecedorProduto}")
+    @GetMapping(value = "/{idFornecedorProduto}/fornecedor")
     @ResponseStatus(code = HttpStatus.OK)
     List<ProdutoDoFornecedorListResponse> findAllProdutosPorIdFornecedorProduto(@PathVariable UUID idFornecedorProduto);
 

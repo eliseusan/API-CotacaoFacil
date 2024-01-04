@@ -1,5 +1,6 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @ToString
+@Builder
 public class FornecedorAlteracaoRequest {
     @NotBlank
     private String nomeFantasia;

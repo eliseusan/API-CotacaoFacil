@@ -3,7 +3,7 @@ package br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorAlteracaoRequest;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.application.api.controller.requests.FornecedorRequest;
 import lombok.*;
-import org.hibernate.validator.constraints.br.CNPJ;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
