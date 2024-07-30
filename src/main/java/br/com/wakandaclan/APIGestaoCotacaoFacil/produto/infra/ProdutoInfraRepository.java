@@ -73,5 +73,12 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 		return produtos;
 	}
 
+	@Override
+	public List<Produto> buscaProdutosComMenorPreco(String descricao, String marca) {
+		List<Produto> produtos= produtoSpringDataJPARepository.findFirstProdutoByDescricaoAndMarcaOrderByValorAsc(descricao, marca);
+		return produtos;
+
+
+	}
 
 }

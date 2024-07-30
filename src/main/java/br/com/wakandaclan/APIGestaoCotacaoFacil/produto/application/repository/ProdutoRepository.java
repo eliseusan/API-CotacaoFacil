@@ -1,6 +1,5 @@
 package br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.repository;
 
-import br.com.wakandaclan.APIGestaoCotacaoFacil.fornecedor.domain.entities.Fornecedor;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 
 import java.util.List;
@@ -18,4 +17,6 @@ public interface ProdutoRepository {
     List<Produto> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto);
 
     List<Produto> buscaProdutosPorMarca(String marca);
+
+    List<Produto> buscaProdutosComMenorPreco(String descricao, String marca);
 }

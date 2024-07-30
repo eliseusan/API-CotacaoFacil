@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -80,4 +81,13 @@ public class ProdutoApplicationService implements ProdutoService {
         log.info("[finish] ProdutoApplicationService - buscaProdutosPorMarca");
         return ProdutoPorMarcaListResponse.converte(produtosPorMarcaList);
     }
+
+    @Override
+    public List<ProdutoCotacaoPorMarcaListResponse> buscaProdutosComMenorPreco(String descricao, String marca) {
+        log.info("[start] ProdutoApplicationService - buscaProdutosComMenorPreco");
+        List<Produto> produtos = produtoRepository.buscaProdutosComMenorPreco(descricao,marca);
+        log.info("[finish] ProdutoApplicationService - buscaProdutosComMenorPreco");
+        return ProdutoCotacaoPorMarcaListResponse.converte(produtos);
+    }
+
 }

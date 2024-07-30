@@ -5,6 +5,7 @@ import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.requests
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.application.api.responses.*;
 import br.com.wakandaclan.APIGestaoCotacaoFacil.produto.domain.entities.Produto;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,4 +24,6 @@ public interface ProdutoService {
     List<ProdutoDoFornecedorListResponse> buscaProdutoPorIdFornecedor(UUID idFornecedorProduto);
 
     List<ProdutoPorMarcaListResponse> buscaProdutosPorMarca(String marca);
+
+    List<ProdutoCotacaoPorMarcaListResponse> buscaProdutosComMenorPreco(String descricao, String marca);
 }

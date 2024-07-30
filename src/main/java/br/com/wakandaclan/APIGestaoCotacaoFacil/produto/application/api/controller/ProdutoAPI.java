@@ -42,4 +42,11 @@ public interface ProdutoAPI {
     @GetMapping(value = "marca/{marca}")
     @ResponseStatus(code = HttpStatus.OK)
     List<ProdutoPorMarcaListResponse> findAllProdutosPorMarca(@PathVariable String marca);
+
+    @GetMapping(value = "/cotacao-por-menorPreco")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ProdutoCotacaoPorMarcaListResponse> buscaProdutosComMenorPreco(
+             @RequestParam (value = "descricao") String descricao,
+             @RequestParam (value = "marca") String marca
+             );
 }

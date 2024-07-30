@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,4 +76,14 @@ public class ProdutoController implements ProdutoAPI {
         log.info("[finish] ProdutoController - findAllProdutosPorMarca");
         return listaDeProdutos;
     }
+
+    @Override
+    public List<ProdutoCotacaoPorMarcaListResponse> buscaProdutosComMenorPreco(String descricao, String marca) {
+        log.info("[start] ProdutoController - buscaProdutosComMenorPreco");
+        List<ProdutoCotacaoPorMarcaListResponse> listaDeProdutos = produtoService.buscaProdutosComMenorPreco(descricao,marca);
+        log.info("[finish] ProdutoController - buscaProdutosComMenorPreco");
+        return listaDeProdutos;
+    }
+
+
 }
